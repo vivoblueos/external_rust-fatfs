@@ -1,0 +1,16 @@
+import("//build/templates/build_template.gni")
+build_rust("fatfs") {
+  crate_type = "rlib"
+  sources = [ "src/lib.rs" ]
+  edition = "2021"
+  deps = [
+    "//external/bitflags/v2.9.0:bitflags",
+    "//external/log/v0.4.22:log",
+  ]
+  features = [
+    "alloc",
+    "log_level_debug",
+    "lfn",
+  ]
+  rustflags = [ "--cap-lints=allow" ]
+}
